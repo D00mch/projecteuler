@@ -1,7 +1,5 @@
 (ns projecteuler.problem-003)
 
-;; largest prime factor of the number 600851475143
-
 (defn- prime? [n]
   (loop [end (Math/floor (Math/sqrt n))]
     (cond (< end 4)           true
@@ -14,7 +12,9 @@
                (filter prime?)
                lazy-seq)))
 
-(defn solution []
+(defn solution
+  ;; largest prime factor of the number 600851475143
+  []
   (loop [n       600851475143
          factors (rest primes)]
     (let [prime (first factors)]
