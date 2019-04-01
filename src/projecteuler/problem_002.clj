@@ -1,6 +1,5 @@
 (ns projecteuler.problem-002)
 
-
 ;; Even Fibonacci numbers with vals < 4.000.000
 
 (def lz-fib
