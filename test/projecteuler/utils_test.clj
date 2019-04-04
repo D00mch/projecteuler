@@ -10,5 +10,3 @@
     (let [ints (rand-ints 30)]
       (is (= (utils/lz-qsort ints) (sort ints)))
       (is (= (utils/lz-qsort > ints) (sort > ints))))))
-
-(test-lazy-quick-sort)
