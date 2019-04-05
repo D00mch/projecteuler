@@ -7,7 +7,8 @@
             [projecteuler.problem-006 :as problem-006]
             [projecteuler.problem-007 :as problem-007]
             [projecteuler.problem-008 :as problem-008]
-            [projecteuler.problem-009 :as problem-009]))
+            [projecteuler.problem-009 :as problem-009]
+            [projecteuler.problem-010 :as problem-010]))
 
 (deftest all-the-problems
   (testing "test all the problems"
@@ -19,4 +20,5 @@
     (is (= 104743 (problem-007/solution)))
     (is (= 23514624000 (problem-008/solution)))
     (is (= 31875000 (problem-009/solution)))
+    (is (= 142913828922 (problem-010/solution)))
     ))

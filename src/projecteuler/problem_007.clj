@@ -4,4 +4,4 @@
 (defn solution
   "the 10 001st prime number"
   []
-  (nth utils/primes 10000))
+  (nth (utils/primes) 10000))

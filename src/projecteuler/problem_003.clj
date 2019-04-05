@@ -5,7 +5,7 @@
   ;; largest prime factor of the number 600851475143
   []
   (loop [n       600851475143
-         factors (rest utils/primes)]
+         factors (rest (utils/primes))]
     (let [prime  (first factors)]
       (cond (= prime n)         n
             (= 0 (rem n prime)) (recur (/ n prime) (rest factors))

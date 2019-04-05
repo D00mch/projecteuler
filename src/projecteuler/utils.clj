@@ -26,7 +26,14 @@
           (= 0.0 (rem n end)) false
           :else               (recur (dec end)))))
 
-(def primes
+(defn prime?
+  "Miller-Rabin test"
+  [accuracy n]
+  (.isProbablePrime (BigInteger/valueOf n) accuracy))
+
+(defn primes
+  "use :accuracy to specify Miller-Rabin test risk"
+  [& {:keys [accuracy] :or {accuracy 7}}]
   (cons 2 (->> (iterate (partial + 2) 3)
-               (filter prime?)
+               (filter (partial prime? accuracy))
                lazy-seq)))
