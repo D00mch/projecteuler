@@ -30,7 +30,7 @@
 (defn- product-of-adjecent-digits [count]
   (->> (partition count 1 nums)
        (map product-of-char-digits)
-       (reduce (fn [max next] (if (> next max) next max)))))
+       (reduce max)))
 
 (defn solution
   []

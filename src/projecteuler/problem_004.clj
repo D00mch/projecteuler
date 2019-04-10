@@ -20,7 +20,6 @@
                         (map #(* (first %) (second %)))
                         (filter palindrome?))]
     (->> (take (quot max-num 50) palindroms) ;; taking only top (1/50) palindroms
-         (utils/lz-qsort >)                  ;; to lazy sort only a little range
-         first)))
+         (reduce max))))
 
 (defn solution [] (find-max-palindrom 999))
