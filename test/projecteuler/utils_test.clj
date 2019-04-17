@@ -10,3 +10,11 @@
     (let [ints (rand-ints 30)]
       (is (= (utils/lz-qsort ints) (sort ints)))
       (is (= (utils/lz-qsort > ints) (sort > ints))))))
+
+(deftest test-sum-digits
+  (testing ""
+    (is (= -6 (utils/sum-digs -123)))
+    (for [n (range 100)
+          :let [num (rand-int 999999)]]
+      (is (= (->> (str num) (map #(Character/getNumericValue %)) (reduce +))
+             (utils/sum-digs num))))))

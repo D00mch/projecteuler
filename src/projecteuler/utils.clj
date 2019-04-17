@@ -20,12 +20,6 @@
   ([comp col]
    (sort-parts comp (list col))))
 
-(defn prime? [n]
-  (loop [end (Math/floor (Math/sqrt n))]
-    (cond (< end 2)           true
-          (= 0.0 (rem n end)) false
-          :else               (recur (dec end)))))
-
 (defn prime?
   "Miller-Rabin test"
   [accuracy n]
@@ -37,3 +31,12 @@
   (cons 2 (->> (iterate (partial + 2) 3)
                (filter (partial prime? accuracy))
                lazy-seq)))
+
+(defn pow [n m]
+  (reduce *' (repeat m n)))
+
+(defn sum-digs [n]
+  (loop [i 0, s n]
+    (if (= s 0)
+      i
+      (recur (+ i (rem s 10)) (quot s 10)))))
