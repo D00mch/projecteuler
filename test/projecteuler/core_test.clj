@@ -15,7 +15,9 @@
             [projecteuler.problem-014 :as problem-014]
             [projecteuler.problem-015 :as problem-015]
             [projecteuler.problem-016 :as problem-016]
-            [projecteuler.problem-017 :as problem-017]))
+            [projecteuler.problem-017 :as problem-017]
+            [projecteuler.problem-018 :as problem-018]
+            [projecteuler.problem-067 :as problem-067]))
 
 (deftest all-the-problems
   (testing "test all the problems"
@@ -35,5 +37,7 @@
     (is (= 137846528820N (problem-015/solution)))
     (is (= 1366 (problem-016/solution)))
     (is (= 21124 (problem-017/solution)))
+    (is (= 1074 (problem-018/solution)))
+    (is (= 7273 (problem-067/solution)))
     ))
 
