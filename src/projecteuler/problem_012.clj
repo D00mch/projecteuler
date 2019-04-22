@@ -9,8 +9,9 @@
 
 (defn- triangle-num-with-over-n-divisors [n]
   (->> triangle-nums
-       (drop-while #(< (divisors-count %) n))
-       first))
+       (pmap #(vector % (divisors-count %)))
+       (drop-while #(< (second %) n))
+       first first))
 
 (defn solution
   "the value of the first triangle number to have over five hundred divisors"
