@@ -25,7 +25,7 @@
       (clojure.string/replace #"( |\n)" "")))
 
 (defn- product-of-char-digits [chars]
-  (reduce #(* %1 (Character/getNumericValue %2)) 1 chars))
+  (reduce #(* %1 (Character/getNumericValue ^char %2)) 1 chars))
 
 (defn- product-of-adjecent-digits [count]
   (->> (partition count 1 nums)

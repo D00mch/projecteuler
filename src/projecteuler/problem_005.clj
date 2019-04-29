@@ -1,13 +1,18 @@
 (ns projecteuler.problem-005)
 
-(defn- divisible? [n dividers]
-  (every? #(= 0 (rem n %)) dividers))
+(defn- gcd [n k]
+  (loop [a n, b k]
+    (if (zero? b)
+      a
+      (recur b (mod a b)))))
+
+(defn- lcm
+  "least common multiple; 4 5 -> 20"
+  [^long n ^long k]
+  (/ (Math/abs (* n k)) (gcd n k)))
 
 (defn solution
   "the smallest positive number that is evenly divisible by
    all of the numbers from 1 to 20"
   []
-  (let [range20 (range 1 21)]
-    (->> (iterate (partial + 20) 2520)
-         (filter #(divisible? % range20))
-         first)))
+  (reduce lcm 1 (range 1 21)))

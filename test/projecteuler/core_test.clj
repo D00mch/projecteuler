@@ -1,43 +1,33 @@
 (ns projecteuler.core-test
-  (:require [clojure.test :refer :all]
-            [projecteuler.problem-002 :as problem-002]
-            [projecteuler.problem-003 :as problem-003]
-            [projecteuler.problem-004 :as problem-004]
-            [projecteuler.problem-005 :as problem-005]
-            [projecteuler.problem-006 :as problem-006]
-            [projecteuler.problem-007 :as problem-007]
-            [projecteuler.problem-008 :as problem-008]
-            [projecteuler.problem-009 :as problem-009]
-            [projecteuler.problem-010 :as problem-010]
-            [projecteuler.problem-011 :as problem-011]
-            [projecteuler.problem-012 :as problem-012]
-            [projecteuler.problem-013 :as problem-013]
-            [projecteuler.problem-014 :as problem-014]
-            [projecteuler.problem-015 :as problem-015]
-            [projecteuler.problem-016 :as problem-016]
-            [projecteuler.problem-017 :as problem-017]
-            [projecteuler.problem-018 :as problem-018]
-            [projecteuler.problem-067 :as problem-067]))
+  (:require [clojure.test :refer :all]))
+
+(defn tst [num expected ]
+  (do (printf "problem-%03d: " num)
+      (let [filename  (format "projecteuler.problem-%03d" num)]
+        (require (symbol filename))
+        (->> (read-string (str "(" filename "/solution)"))
+             eval
+             time
+             (= expected)
+             is))))
 
 (deftest all-the-problems
   (testing "test all the problems"
-    (is (= 4613732 (problem-002/solution)))
-    (is (= 6857 (problem-003/solution)))
-    (is (= 906609 (problem-004/solution)))
-    (is (= 232792560 (problem-005/solution)))
-    (is (= 25164150 (problem-006/solution)))
-    (is (= 104743 (problem-007/solution)))
-    (is (= 23514624000 (problem-008/solution)))
-    (is (= 31875000 (problem-009/solution)))
-    (is (= 142913828922 (problem-010/solution)))
-    (is (= 70600674 (problem-011/solution)))
-    (is (= 76576500 (problem-012/solution)))
-    (is (= 5537376230 (problem-013/solution)))
-    (is (= 837799 (problem-014/solution)))
-    (is (= 137846528820N (problem-015/solution)))
-    (is (= 1366 (problem-016/solution)))
-    (is (= 21124 (problem-017/solution)))
-    (is (= 1074 (problem-018/solution)))
-    (is (= 7273 (problem-067/solution)))
-    ))
-
+    (tst 2 4613732)
+    (tst 3 6857)
+    (tst 4 906609)
+    (tst 5 232792560)
+    (tst 6 25164150)
+    (tst 7 104743)
+    (tst 8 23514624000)
+    (tst 9 31875000)
+    (tst 10 142913828922)
+    (tst 11 70600674)
+    (tst 12 76576500)
+    (tst 13 5537376230)
+    (tst 14 837799)
+    (tst 15 137846528820N)
+    (tst 16 1366)
+    (tst 17 21124)
+    (tst 18 1074)
+    (tst 67 7273)))

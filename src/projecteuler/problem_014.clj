@@ -3,14 +3,11 @@
 (defn- collatz-f [n]
   (if (even? n) (/ n 2) (-> (* 3 n) (+ 1))))
 
-(def ^:private collatz-count-mem
-  (memoize
-   (fn [n count]
-     (if (= n 1)
-       count
-       (recur (collatz-f n) (inc count))))))
-
-(defn- collatz-count [n] (collatz-count-mem n 0))
+(defn- collatz-count [num]
+  (loop [n num, count 0]
+    (if (= n 1)
+      count
+      (recur (collatz-f n) (inc count)))))
 
 (defn solution
   "Which starting number, under one million, produces the longest Collatz chain?"
